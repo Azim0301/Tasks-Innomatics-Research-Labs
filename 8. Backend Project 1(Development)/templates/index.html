@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regex Tester</title>
+
+    <style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    padding: 40px;
+}
+
+.container {
+    background: #ffffff;
+    padding: 25px;
+    width: 520px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    color: #444;
+}
+
+textarea,
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005f8e;
+}
+
+h3 {
+    margin-top: 25px;
+    color: #333;
+}
+
+ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+ul li {
+    background: #f8f9fa;
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    border-left: 4px solid #0077b5;
+    list-style: none;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.no-matches {
+    margin-top: 20px;
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+}
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Regex Tester</h2>
+
+    <form method="POST">
+        <label>Test String</label>
+        <textarea name="text" required></textarea>
+
+        <label>Regular Expression</label>
+        <input type="text" name="regex" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+     {% if data %}
+      <h3>Found Matches</h3>
+      <ul>
+        {% for item in data %}
+          <li>
+            Match: <b>{{ item.match }}</b> |
+            Index: <b>{{ item.index }}</b>
+          </li>
+        {% endfor %}
+      </ul>
+    {% elif data is defined %}
+      <h3 class="no-matches">No Matches Found</h3>
+    {% endif %}
+</div>
+
+</body>
+</html>
